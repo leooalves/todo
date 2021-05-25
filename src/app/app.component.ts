@@ -9,6 +9,7 @@ import { Todo } from 'src/models/todo.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+	public mode: string = "list";
 	public todos: Todo[] = [];
 	public title: String = "Minhas tarefas";
 	public form: FormGroup;
@@ -42,23 +43,31 @@ export class AppComponent {
 		if(index !== -1){
 			this.todos.splice(index,1);
 		}
+		this.save();
 	}
 
 	markAsDone(todo: Todo){
 		todo.done = true;
+		this.save();
 	}
 
 	markAsUndone(todo: Todo){
 		todo.done = false;
+		this.save();
 	}
 
 	save(){
 		const data = JSON.stringify(this.todos);
 		localStorage.setItem("todos",data);
+		this.mode = "list";
 	}
 
 	load(){
 		const data = localStorage.getItem("todos");
 		this.todos = data !== null ? JSON.parse(data):[];
+	}
+
+	changemode(newMode:string){
+		this.mode = newMode;
 	}
 }
