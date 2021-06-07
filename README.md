@@ -1,4 +1,5 @@
 # Todo
+Project based on the introductory angular course (https://balta.io/cursos/comecando-com-angular) in which a to-do list is implemented.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
 
